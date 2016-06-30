@@ -1,55 +1,59 @@
-﻿
+﻿.. include:: Includes.txt
 
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
 
-.. ==================================================
-.. DEFINE SOME TEXTROLES
-.. --------------------------------------------------
-.. role::   underline
-.. role::   typoscript(code)
-.. role::   ts(typoscript)
-   :class:  typoscript
-.. role::   php(code)
+.. _start:
 
-=====================================
-EXT: Open Graph Protocol for tt\_news
-=====================================
+=============================================================
+Open Graph Protocol for tt_news
+=============================================================
 
-:Author:
-      Jonathan Heilmann
+.. only:: html
 
-:Created:
-      2012-04-09 12:10:20
+	:Classification:
+   		jh_opengraph_ttnews
 
-:Changed:
-      2015-05-13 21:20:03
+   	:Version:
+   		|release|
 
-:Classification:
-      jh_opengraph_ttnews
+	:Language:
+   		en
 
-:Description:
-      Generates the facebook Open Graph Protocol parameters from tt_news item in single-view and adds them to the html-header.
+   	:Description:
+   		Generates the facebook Open Graph Protocol parameters from tt_news item in single-view and adds them to the html-header.
 
-:Keywords:
-      facebook, Open Graph, Open Graph protocol, ttnews, tt_news
+   	:Keywords:
+   		facebook, Open Graph, Open Graph protocol, ttnews, tt_news
 
-:Author:
-      Jonathan Heilmann
+   	:Copyright:
+   		2012-2016
 
-:Email:
-      jon@roboterfreak.de
+   	:Author:
+   		Jonathan Heilmann
 
-:Language:
-      en
+   	:Email:
+   		mail@jonathan-heilmann.de
 
+   	:License:
+   		This document is published under the Open Publication License
+   		available from http://www.opencontent.org/openpub/
+
+	:Rendered:
+   		|today|
+
+	The content of this document is related to TYPO3,
+	a GNU/GPL CMS/Framework available from `www.typo3.org <https://typo3.org/>`__.
+
+
+	**Table of Contents**
 
 .. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :glob:
+	:maxdepth: 3
+	:titlesonly:
 
-   ExtOpenGraphProtocolForTtNews/Index
+   	Introduction/Index
+   	Administrator/Index
+   	Configuration/Index
+   	KnownProblems/Index
+   	ChangeLog/Index
+   	Links
 
