@@ -100,7 +100,7 @@ class OgRenderer {
             // Get description
             $og['description'] = $markerArray['###NEWS_SUBHEADER###'] != '' ? strip_tags($markerArray['###NEWS_SUBHEADER###']) : GeneralUtility::fixed_lgd_cs(strip_tags($markerArray['###NEWS_CONTENT###']), 100);
 
-            // Get locale
+                // Get locale
             $localeParts = explode('.', $GLOBALS['TSFE']->tmpl->setup['config.']['locale_all']);
             if (isset($localeParts[0])) {
                 $og['locale'] = str_replace('-', '_', $localeParts[0]);
@@ -146,20 +146,7 @@ class OgRenderer {
                             if ($key == 'image')
                             {
                                 // Add image details
-                                $absImagePath = GeneralUtility::getFileAbsFileName($multiPropertyValue);
-                                if (file_exists($absImagePath))
-                                {
-                                    $imageSize = getimagesize($absImagePath);
-
-                                    $res[] = $this->buildProperty($key,
-                                        GeneralUtility::locationHeaderUrl($multiPropertyValue));
-                                    if ($imageSize['mime'])
-                                        $res[] = $this->buildProperty($key . ':type', $imageSize['mime']);
-                                    if ($imageSize[0])
-                                        $res[] = $this->buildProperty($key . ':width', $imageSize[0]);
-                                    if ($imageSize[1])
-                                        $res[] = $this->buildProperty($key . ':height', $imageSize[1]);
-                                }
+                                $res[] = $this->buildOgImageProperties($key, $multiPropertyValue);
                             } else
                             {
                                 $res[] = $this->buildProperty($key, $multiPropertyValue);
@@ -178,6 +165,60 @@ class OgRenderer {
             }
         }
         return implode(chr(10), ArrayUtility::flatten($res));
+    }
+
+    /**
+     * Builds open graph properties for images
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return array
+     */
+    protected function buildOgImageProperties($key, $value)
+    {
+        $res = array();
+
+        $imageSize = array();
+        $parsedUrl = parse_url($value);
+        if (isset($parsedUrl['host']) && $parsedUrl['host'])
+        {
+            // Analyze image with given host
+            $res[] = $this->buildProperty($key, $value);
+
+            if (GeneralUtility::getHostname() == $parsedUrl['host'])
+            {
+                // Get image absolute filename on own host
+                $value = GeneralUtility::getFileAbsFileName(
+                    substr($parsedUrl['path'], 1) .
+                    (isset($parsedUrl['query']) && $parsedUrl['query'] ? '?' . $parsedUrl['query'] : '') .
+                    (isset($parsedUrl['fragment']) && $parsedUrl['fragment'] ? '#' . $parsedUrl['fragment'] : '')
+                );
+            }
+
+            if (file_exists($value))
+                $imageSize = getimagesize($value);
+        } else
+        {
+            // Analyze image with relative filename
+            $absImagePath = GeneralUtility::getFileAbsFileName($value);
+            if (file_exists($absImagePath))
+            {
+                $imageSize = getimagesize($absImagePath);
+
+                $res[] = $this->buildProperty($key,
+                    GeneralUtility::locationHeaderUrl($value));
+            }
+        }
+
+        // Add image details if available
+        if (isset($imageSize['mime']) && $imageSize['mime'])
+            $res[] = $this->buildProperty($key . ':type', $imageSize['mime']);
+        if (isset($imageSize[0]) && $imageSize[0])
+            $res[] = $this->buildProperty($key . ':width', $imageSize[0]);
+        if (isset($imageSize[1]) && $imageSize[1])
+            $res[] = $this->buildProperty($key . ':height', $imageSize[1]);
+
+        return $res;
     }
 
     /**
