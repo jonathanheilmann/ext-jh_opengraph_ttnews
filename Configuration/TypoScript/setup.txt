@@ -1,4 +1,4 @@
-config.htmlTag_setParams =	xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml"
+config.htmlTag_setParams := appendString( xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml")
 
 plugin.tt_news.tx_jhopengraphttnews {
     nopic_path = {$plugin.tt_news.tx_jhopengraphttnews.nopic_path}
