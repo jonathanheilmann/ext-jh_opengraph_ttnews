@@ -54,7 +54,7 @@ class OgRenderer {
      * @return array markerArray
      */
     public function extraItemMarkerProcessor($markerArray, $row, $conf, &$pObj) {
-        if(GeneralUtility::inList($pObj->conf['tx_jhopengraphttnews_pi1.']['enableForWhatToDisplay'], $pObj->config['code'])) {
+        if(GeneralUtility::inList($pObj->conf['tx_jhopengraphttnews.']['enableForWhatToDisplay'], $pObj->config['code'])) {
             $og = array();
 
             if ($this->signalSlotDispatcher == null) {
@@ -86,9 +86,9 @@ class OgRenderer {
                         $og['image'][] = $GLOBALS['TSFE']->tmpl->getFileName('uploads/pics/' . $image);
                     }
                 }
-            } else
+            } else if ($pObj->conf['tx_jhopengraphttnews.']['nopic_path'])
             {
-                $og['image'][] = $GLOBALS['TSFE']->tmpl->getFileName($pObj->conf['tx_jhopengraphttnews_pi1.']['nopic_path']);
+                $og['image'][] = $GLOBALS['TSFE']->tmpl->getFileName($pObj->conf['tx_jhopengraphttnews.']['nopic_path']);
             }
 
             // Get url
