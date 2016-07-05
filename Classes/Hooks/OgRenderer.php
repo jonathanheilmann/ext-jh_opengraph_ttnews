@@ -98,7 +98,7 @@ class OgRenderer {
             $og['site_name'] = $GLOBALS['TSFE']->tmpl->setup['sitetitle'] != '' ? $GLOBALS['TSFE']->tmpl->setup['sitetitle'] : $GLOBALS['TSFE']->TYPO3_CONF_VARS['SYS']['sitename'];
 
             // Get description
-            $og['description'] = GeneralUtility::fixed_lgd_cs(strip_tags($markerArray['###NEWS_SUBHEADER###'] != '' ? $markerArray['###NEWS_SUBHEADER###'] : $markerArray['###NEWS_CONTENT###']), 100);
+            $og['description'] = $markerArray['###NEWS_SUBHEADER###'] != '' ? strip_tags($markerArray['###NEWS_SUBHEADER###']) : GeneralUtility::fixed_lgd_cs(strip_tags($markerArray['###NEWS_CONTENT###']), 100);
 
             // Get locale
             $localeParts = explode('.', $GLOBALS['TSFE']->tmpl->setup['config.']['locale_all']);
