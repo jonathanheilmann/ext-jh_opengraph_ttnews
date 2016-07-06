@@ -25,6 +25,8 @@ view. The following meta-tags are supported:
 
 - og:description
 
+- og:locale
+
 For more information about the Open Graph protocol see:
 `https://developers.facebook.com/docs/opengraphprotocol/
 <https://developers.facebook.com/docs/opengraphprotocol/>`_ or
