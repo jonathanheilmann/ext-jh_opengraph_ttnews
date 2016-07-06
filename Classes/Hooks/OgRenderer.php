@@ -100,11 +100,10 @@ class OgRenderer {
             // Get description
             $og['description'] = $markerArray['###NEWS_SUBHEADER###'] != '' ? strip_tags($markerArray['###NEWS_SUBHEADER###']) : GeneralUtility::fixed_lgd_cs(strip_tags($markerArray['###NEWS_CONTENT###']), 100);
 
-                // Get locale
+            // Get locale
             $localeParts = explode('.', $GLOBALS['TSFE']->tmpl->setup['config.']['locale_all']);
-            if (isset($localeParts[0])) {
+            if (isset($localeParts[0]))
                 $og['locale'] = str_replace('-', '_', $localeParts[0]);
-            }
 
             // Signal to manipulate og-properties before header creation
             $this->signalSlotDispatcher->dispatch(
