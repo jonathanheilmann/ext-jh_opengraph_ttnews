@@ -1,18 +1,9 @@
-﻿
+﻿.. include:: ../Includes.txt
 
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
+.. _introduction:
 
-.. ==================================================
-.. DEFINE SOME TEXTROLES
-.. --------------------------------------------------
-.. role::   underline
-.. role::   typoscript(code)
-.. role::   ts(typoscript)
-   :class:  typoscript
-.. role::   php(code)
+Introduction
+------------
 
 
 What does it do?
@@ -33,6 +24,8 @@ view. The following meta-tags are supported:
 - og:site\_name
 
 - og:description
+
+- og:locale
 
 For more information about the Open Graph protocol see:
 `https://developers.facebook.com/docs/opengraphprotocol/
