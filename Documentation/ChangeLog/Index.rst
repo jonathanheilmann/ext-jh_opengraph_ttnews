@@ -5,6 +5,11 @@
 ChangeLog
 =========
 
+1.0.1
+-----
+
+\* Updated dependencies/conflicts
+
 1.0.0
 -----
 
