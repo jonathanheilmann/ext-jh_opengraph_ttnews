@@ -14,7 +14,7 @@ $EM_CONF[$_EXTKEY] = array(
     'title' => 'Open Graph Protocol for tt_news',
     'description' => 'Generates the facebook Open Graph Protocol parameters from tt_news item in single-view and adds them to the html-header.',
     'category' => 'plugin',
-    'version' => '1.0.0',
+    'version' => '1.0.1',
     'state' => 'stable',
     'uploadfolder' => false,
     'createDirs' => '',
@@ -30,7 +30,9 @@ $EM_CONF[$_EXTKEY] = array(
                     'tt_news' => '3.5.2-',
                 ),
             'conflicts' =>
-                array(),
+                array(
+                    'jh_opengraphprotocol' => '0.0.0-1.2.0'
+                ),
             'suggests' =>
                 array(
                     'jh_opengraphprotocol' => '1.2.1-'
